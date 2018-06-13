@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<!-- commending the following because we use base templates
+ {% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Article</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> #or href="/staric/styles.css" so above code is not req.
+  </head>
+  <body> -->
+    <h1>Article list</h1>
+    <div class="articles">
+      {% for art in article %}
+        <div class="art">
+          <h2><a href="{% url 'articles:detail' slug=art.slug %}">{{ art.title }}</a></h2> <!--here articles is the app name  -->
+          <p>{{ art.snippet }}</p>
+          <p>{{ art.date }}</p>
+        </div>
+      {% endfor %}
+    </div>
+{% endblock %}
