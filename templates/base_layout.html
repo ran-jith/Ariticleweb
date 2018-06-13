@@ -9,7 +9,24 @@
   </head>
   <body>
     <div class="wrapper">
+      <!-- in the below case we can also use 'home' instead of 'articles:list' -->
       <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo2.jpg' %}"/></a></h1> <!--django looks a url named list. -->
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+                <li>
+                <form class="logout-link" action="{% url  'accounts:logout' %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit">Logout</button>
+                </form>
+              </li>
+              <li><a href="{% url 'articles:create' %}" class="highlight">New Article</a></li>
+          {% else %}
+              <li><a href="{% url 'accounts:login' %}">Login</a></li>
+              <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+          {% endif %}
+        </ul>
+      </nav>
       {% block content %} <!--create a block named content -->
       {% endblock %}
     </div>

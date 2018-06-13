@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 """
 when we make any changes in models need to execute the following commands
@@ -14,9 +15,9 @@ class Article(models.Model): #syntax in django
     slug = models.SlugField() #slugs are used later for url names
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    #thump = models.ImageField(default='default.jpg', blank=True)
     thumb = models.ImageField(default='default.jpeg', blank=True)
-    #add in auther later
+    author = models.ForeignKey(User,default=None)
+
     def __str__(self):  #for the purpose of shell(it is like inbuit fn)
         return self.title
 

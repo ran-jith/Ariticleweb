@@ -5,13 +5,14 @@ from.import views                      #"from." means from current directory and
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
+from articles import views as art_views #there a 2 views present here thats why
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^articles/',include('articles.urls')),#from app article urls.py file(this is how we include app url in main url)
     url(r'^accounts/',include('accounts.urls')),
     url(r'^about/$',views.about),         #about is the name of function created in views.py
-    url(r'^$',views.homepage),            #home page goes to .com(main domain)
+    url(r'^$',art_views.article_list,name="home"),            #home page goes to .com(main domain)
 
 ]
 #for image
