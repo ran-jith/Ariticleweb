@@ -9,6 +9,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^articles/',include('articles.urls')),#from app article urls.py file(this is how we include app url in main url)
+    url(r'^accounts/',include('accounts.urls')),
     url(r'^about/$',views.about),         #about is the name of function created in views.py
     url(r'^$',views.homepage),            #home page goes to .com(main domain)
 
