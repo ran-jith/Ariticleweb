@@ -3,6 +3,8 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from.import views                      #"from." means from current directory and need to import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -11,5 +13,8 @@ urlpatterns = [
     url(r'^$',views.homepage),            #home page goes to .com(main domain)
 
 ]
-
+#for image
 urlpatterns += staticfiles_urlpatterns() #this is for add styles,after creating this need to edit settings.py file
+
+#for media
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

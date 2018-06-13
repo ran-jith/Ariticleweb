@@ -14,7 +14,8 @@ class Article(models.Model): #syntax in django
     slug = models.SlugField() #slugs are used later for url names
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    #add in thumbnail later
+    #thump = models.ImageField(default='default.jpg', blank=True)
+    thumb = models.ImageField(default='default.jpeg', blank=True)
     #add in auther later
     def __str__(self):  #for the purpose of shell(it is like inbuit fn)
         return self.title
